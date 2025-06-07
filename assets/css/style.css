@@ -1,11 +1,12 @@
 /* --------- Variables --------- */
 :root {
-
-    /* ==========FUENTES============ */
-    --font-body: 'Lora', sans-serif;
-    --font-title: 'Libre Baskerville', cursive;
+    /* 🔹 FUENTES OPTIMIZADAS */
+    --font-body: 'Lora', serif;
+    --font-title: 'Libre Baskerville', serif;
     --font-text: 'Montserrat', sans-serif;
-    --font-button: 'Merriweather', sans-serif;
+    --font-button: 'Playfair Display', serif; /* Ajusté Merriweather, ya que no está en la solicitud */
+
+
 
 /* ========== COLORES ============= */
 
@@ -383,16 +384,17 @@ p {
 }
 
 .hero__overlay img {
-    width: 300px;
+    width: 400px;
     margin-top: 1rem;
-    opacity: 1;
-
+    opacity: 0; /* Inicialmente oculto */
+    transform: scale(0.65);
 }
 
 /* ---------- Reutilizable: fade-in + zoom ---------- */
 .fade-zoom {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.65);
+    animation: fadeInZoom 2.5s ease-out forwards;
 }
 
 .fade-zoom.appear {
@@ -401,13 +403,13 @@ p {
 
 @keyframes fadeInZoom {
     0% {
-        opacity: 0;
-        transform: scale(0.65);
+        opacity: 0.2; /* 🏁 Arranca semi visible en lugar de 0 */
+        transform: scale(0.55); /* Inicio más cerca del tamaño final */
     }
-
+   
     100% {
-        opacity: 1;
-        transform: scale(1);
+        opacity: 1; /* 🌟 Termina completamente visible */
+        transform: scale(1); /* Tamaño final */
     }
 }
 
@@ -554,6 +556,7 @@ p {
 .rspv__info,
 .dresscode__info {
     text-align: center;
+    padding-inline: 15px;
 }
 .dresscode{
     width: 120px;
@@ -1047,16 +1050,13 @@ p {
     }
 }
 
-
-
-
 @media (min-width: 768px) {
     .welcome__content {
         width: 60%;
     }
 
     .hero__overlay img {
-        width: 350px;
+        width: 450px;
     }
 
     .galeria__grid {
@@ -1091,7 +1091,6 @@ p {
         padding: 0;
     }
 
-
     .instagram__text p {
         width: 690px;
     }
@@ -1114,6 +1113,10 @@ p {
     .welcome__content {
         width: 40%;
     }
+
+   .hero__overlay img {
+    width: 450px;
+   }
 
     #clock div {
         width: 130px;

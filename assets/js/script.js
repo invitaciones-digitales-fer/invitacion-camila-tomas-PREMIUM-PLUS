@@ -29,7 +29,29 @@ btnGift.onclick = () => modal.style.display = 'flex';
 close.onclick = () => modal.style.display = 'none';
 window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    const enterBtn = document.getElementById("enter-button");
+    const overlay = document.getElementById("welcome");
+    const logo = document.querySelector(".hero__logo");
+
+    enterBtn.addEventListener("click", function() {
+        overlay.classList.add("fade-out");
+
+        // Esperar a que el overlay desaparezca antes de animar el logo
+        setTimeout(() => {
+            overlay.style.display = "none";
+
+            // Activar la animación del logo
+            logo.classList.add("fade-zoom");
+        }, 1000);
+    });
+});
+
+
+
 /* ====== Scroll reveal para .fade-zoom ====== */
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
