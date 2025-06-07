@@ -207,6 +207,11 @@ p {
     text-align: center;
 }
 
+.section-countdown {
+    background-color: #fbe9d4;
+    padding-bottom: 15px;
+}
+
 /* Estilos iconos */
 
 .countdown__img {
@@ -316,24 +321,23 @@ p {
 
 
 
-/* --------- Scroll reveal --------- */
-.section.hidden {
+/* 🔹 Oculta inicialmente la sección */
+.hidden {
     opacity: 0;
     transform: translateY(60px);
-    transition: .9s
+    transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
-.section.appear {
+/* 🔹 Aparece cuando la clase "appear" se activa */
+.hidden.appear {
     opacity: 1;
-    transform: translateY(0)
+    transform: translateY(0);
 }
 
-/* ---------- Fade-in desde arriba (scroll-triggered) ---------- */
+/* 🔹 Animación fade-in desde arriba */
 .fade-down {
     opacity: 0;
     transform: translateY(-40px);
-    /* Parte 40px arriba */
-
 }
 
 .fade-down.appear {
@@ -345,12 +349,12 @@ p {
         opacity: 0;
         transform: translateY(-40px);
     }
-
     100% {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 
 
 

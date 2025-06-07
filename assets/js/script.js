@@ -30,42 +30,34 @@ close.onclick = () => modal.style.display = 'none';
 window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+    // 🔹 Variables principales
     const enterBtn = document.getElementById("enter-button");
     const overlay = document.getElementById("welcome");
     const logo = document.querySelector(".hero__logo");
 
-    enterBtn.addEventListener("click", function() {
+    // 🎬 Animación de logo después del overlay
+    enterBtn?.addEventListener("click", function () {
         overlay.classList.add("fade-out");
 
-        // Esperar a que el overlay desaparezca antes de animar el logo
         setTimeout(() => {
             overlay.style.display = "none";
-
-            // Activar la animación del logo
-            logo.classList.add("fade-zoom");
+            logo.classList.add("fade-zoom"); // Activa animación del logo
         }, 1000);
     });
-});
 
+    // 🔹 Configurar IntersectionObserver para animaciones en scroll
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("appear");
+                observer.unobserve(entry.target); // Solo se ejecuta una vez
+            }
+        });
+    }, { threshold: 0.2 }); // Detecta cuando el elemento está 20% visible
 
-
-/* ====== Scroll reveal para .fade-zoom ====== */
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('appear');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-document.querySelectorAll('.fade-zoom').forEach(el => {
-  observer.observe(el);
-});
-document.querySelectorAll('.fade-zoom, .fade-down').forEach(el => {
-  observer.observe(el);
+    // Aplicar el observador a todas las secciones con efecto de entrada
+    document.querySelectorAll(".hidden, .fade-down, .fade-zoom").forEach(el => observer.observe(el));
 });
 
 
